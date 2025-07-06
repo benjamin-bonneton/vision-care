@@ -1,0 +1,42 @@
+#main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 15px;
+}
+
+header .stats-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 15px;
+}
+
+header .actions-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+/* Main */
+main .timer-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 20px 0;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

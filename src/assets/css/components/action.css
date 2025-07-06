@@ -1,0 +1,20 @@
+.action {
+    width: 57px;
+    height: 57px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50rem;
+    background-color: var(--gray);
+    box-shadow: 0px 0px 4px 0px #00000033;
+    cursor: pointer;
+}
+
+.action img {
+    width: 27px;
+    height: 27px;
+    transition: 0.3s;
+}
+.action:hover img {
+    filter: brightness(0.6);
+}

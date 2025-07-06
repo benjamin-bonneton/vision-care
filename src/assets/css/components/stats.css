@@ -1,0 +1,25 @@
+.stats {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 30px;
+    border-radius: 50rem;
+    background-color: var(--gray);
+    box-shadow: 0px 0px 4px 0px #00000033;
+    cursor: default;
+}
+
+.stats img {
+    width: 27px;
+    height: 27px;
+}
+
+.stats p {
+    margin: 0;
+    padding: 0;
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 600;
+}

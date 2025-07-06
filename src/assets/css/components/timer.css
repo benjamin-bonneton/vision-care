@@ -1,0 +1,20 @@
+.timer {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px 60px;
+    border-radius: 50rem;
+    background-color: var(--gray);
+    box-shadow: 0px 0px 4px 0px #00000033;
+    cursor: default;
+}
+
+.timer p {
+    margin: 0;
+    padding: 0;
+    color: var(--white);
+    font-size: 40px;
+    font-weight: 700;
+}
