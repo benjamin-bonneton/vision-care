@@ -9,6 +9,7 @@ import Stats from "../components/stats";
 import Action from "../components/action";
 import Timer from "../components/timer";
 import History from "../components/history";
+import SettingsModal from "../components/settings-modal";
 
 // Services
 import sendNotification from "../services/notification";
@@ -22,16 +23,16 @@ import startIcon from "../assets/icons/start.svg";
 import pauseIcon from "../assets/icons/pause.svg";
 import autoPlayIcon from "../assets/icons/autoplay.svg";
 import stopIcon from "../assets/icons/stop.svg";
+import settingsIcon from "../assets/icons/settings.svg";
 import deleteIcon from "../assets/icons/delete.svg";
 
-const Main = () => {
-  // Default Timer Values
-  const defaultWorkTime = 1200;
-  const defaultBreakTime = 30;
+const DEFAULT_WORK_TIME = 1200;
+const DEFAULT_BREAK_TIME = 30;
 
+const Main = () => {
   // Timer
-  const [workTime, setWorkTime] = useState(defaultWorkTime);
-  const [breakTime, setBreakTime] = useState(defaultBreakTime);
+  const [workTime, setWorkTime] = useState(DEFAULT_WORK_TIME);
+  const [breakTime, setBreakTime] = useState(DEFAULT_BREAK_TIME);
   const [isRunning, setIsRunning] = useState(false);
 
   // Total Time
@@ -40,6 +41,23 @@ const Main = () => {
 
   // Option
   const [autoPlay, setAutoPlay] = useState<boolean>(true);
+
+  // Settings Modal
+  const [showSettings, setShowSettings] = useState(false);
+
+  // Default Timer Values (from localStorage or fallback)
+  const [defaultWorkTime, setDefaultWorkTime] = useState(() => {
+    return parseInt(
+      localStorage.getItem("defaultWorkTime") || `${DEFAULT_WORK_TIME}`,
+      10
+    );
+  });
+  const [defaultBreakTime, setDefaultBreakTime] = useState(() => {
+    return parseInt(
+      localStorage.getItem("defaultBreakTime") || `${DEFAULT_BREAK_TIME}`,
+      10
+    );
+  });
 
   // Get time in local storage
   useEffect(() => {
@@ -50,6 +68,12 @@ const Main = () => {
       parseInt(localStorage.getItem("totalBreakTime") || "0", 10)
     );
   }, []);
+
+  // Update timer values if defaults change
+  useEffect(() => {
+    setWorkTime(defaultWorkTime);
+    setBreakTime(defaultBreakTime);
+  }, [defaultWorkTime, defaultBreakTime]);
 
   // Handle timer updates
   const updateWorkTime = () => {
@@ -131,6 +155,18 @@ const Main = () => {
     }
   }, [isRunning, workTime, breakTime, defaultWorkTime, defaultBreakTime]);
 
+  const handleSaveSettings = (work: number, brk: number) => {
+    setDefaultWorkTime(work);
+    setDefaultBreakTime(brk);
+    localStorage.setItem("defaultWorkTime", work.toString());
+    localStorage.setItem("defaultBreakTime", brk.toString());
+    setWorkTime(work);
+    setBreakTime(brk);
+    setShowSettings(false);
+  };
+
+  const handleCloseSettings = () => setShowSettings(false);
+
   const resetTimer = () => {
     setIsRunning(false);
     setWorkTime(defaultWorkTime);
@@ -145,6 +181,10 @@ const Main = () => {
     localStorage.removeItem("totalWorkTime");
     localStorage.removeItem("totalBreakTime");
     localStorage.removeItem("history");
+    localStorage.removeItem("defaultWorkTime");
+    localStorage.removeItem("defaultBreakTime");
+    setDefaultWorkTime(DEFAULT_WORK_TIME);
+    setDefaultBreakTime(DEFAULT_BREAK_TIME);
     setTotalWorkTime(0);
     setTotalBreakTime(0);
     resetTimer();
@@ -157,6 +197,14 @@ const Main = () => {
   // Render
   return (
     <div id="main">
+      {showSettings && (
+        <SettingsModal
+          workTime={defaultWorkTime}
+          breakTime={defaultBreakTime}
+          onSave={handleSaveSettings}
+          onClose={handleCloseSettings}
+        />
+      )}
       <header>
         <div className="stats-container">
           <Stats
@@ -171,6 +219,11 @@ const Main = () => {
           />
         </div>
         <div className="actions-container">
+          <Action
+            imgSrc={settingsIcon}
+            altText="Settings"
+            onClick={() => setShowSettings(true)}
+          />
           <Action
             imgSrc={deleteIcon}
             altText="Remove Data"

@@ -18,8 +18,11 @@ const Action: React.FC<ActionProps> = ({
     <div
       className="action"
       title={altText}
-      onClick={onClick}
-      style={{ cursor: disabled ? "not-allowed" : "pointer" }}
+      onClick={disabled ? undefined : onClick}
+      style={{
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.5 : 1,
+      }}
     >
       <img src={imgSrc} alt={altText} />
     </div>
