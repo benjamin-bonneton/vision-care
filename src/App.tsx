@@ -1,11 +1,11 @@
 // React Routers
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Styles
-import './assets/css/App.css'
+import "./assets/css/App.css";
 
 // Components
-import Main from './pages/main'
+import Main from "./pages/main";
 
 // App Component
 function App() {
@@ -17,7 +17,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

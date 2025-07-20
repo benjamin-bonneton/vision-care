@@ -1,69 +1,72 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Vision Care
 
-Currently, two official plugins are available:
+Vision Care is a modern web application designed to help users maintain healthy screen habits and reduce eye strain. Built with React and Vite, it provides features such as break reminders and session history tracking.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Break Reminders:** Get notified when it's time to take a break from the screen.
+- **Session History:** Track your work and break sessions over time.
+- **Statistics:** Visualize your productivity and break patterns.
+- **Modern UI:** Clean, responsive interface with accessible controls.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/benjamin-bonneton/vision-care.git
+   cd vision-care
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+3. **Start the development server:**
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Project Structure
+
+```
+vision-care/
+├── public/                # Static assets
+├── src/                   # Source code
+│   ├── assets/            # Images, fonts, icons, CSS
+│   ├── components/        # Reusable React components
+│   ├── pages/             # Page-level components
+│   ├── services/          # Business logic and utilities
+│   └── types/             # TypeScript type definitions
+├── index.html             # Main HTML file
+├── package.json           # Project metadata and scripts
+├── tsconfig.json          # TypeScript configuration
+└── vite.config.ts         # Vite configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
+- `npm run dev` — Start the development server
+- `npm run build` — Build for production
+- `npm run preview` — Preview the production build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## License
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+
+---
+
+Feel free to contribute or open issues to help improve Vision Care!

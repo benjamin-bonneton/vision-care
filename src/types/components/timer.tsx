@@ -1,3 +1,3 @@
 export type TimerProps = {
-    time: number;
+  time: number;
 };
