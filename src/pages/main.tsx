@@ -121,7 +121,7 @@ const Main = () => {
           setWorkTime(-1);
           createHistoryItem({
             altText: "Work Session",
-            time: totalWorkTime,
+            time: defaultWorkTime,
           });
           sendNotification({
             title: "VisionCare",
@@ -135,7 +135,7 @@ const Main = () => {
           setBreakTime(-1);
           createHistoryItem({
             altText: "Break Session",
-            time: totalBreakTime,
+            time: defaultBreakTime,
           });
           sendNotification({
             title: "VisionCare",
@@ -244,7 +244,6 @@ const Main = () => {
             imgSrc={isRunning ? pauseIcon : startIcon}
             altText={isRunning ? "Pause Timer" : "Start Timer"}
             onClick={toggleTimer}
-            disabled={workTime < 0}
           />
           <Action
             imgSrc={autoPlay ? autoPlayIcon : stopIcon}
@@ -255,7 +254,11 @@ const Main = () => {
 
         {workTime < 0 && (
           <div
-            style={{ textAlign: "center", marginTop: "20px", color: "#4CAF50" }}
+            style={{
+              textAlign: "center",
+              marginTop: "20px",
+              color: "#4CAF50",
+            }}
           >
             Break Time - Look away from your screen!
           </div>
@@ -264,13 +267,6 @@ const Main = () => {
       <footer>
         <History />
       </footer>
-      <a
-        href="https://benjamin-bonneton.com"
-        target="_blank"
-        className="copyright"
-      >
-        © Vision Care - Benjamin Bonneton
-      </a>
     </div>
   );
 };

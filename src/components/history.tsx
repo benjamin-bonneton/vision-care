@@ -33,6 +33,7 @@ const getHistoryData = () => {
 
 const getHistoryItems = (history: HistoryItemProps[], visibleCount: number) => {
   return history
+    .reverse()
     .slice(0, visibleCount)
     .map((item: HistoryItemProps, index: number) => (
       <HistoryItem

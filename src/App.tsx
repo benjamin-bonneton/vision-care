@@ -16,6 +16,13 @@ function App() {
           <Route path="/" element={<Main />} />
         </Routes>
       </BrowserRouter>
+      <a
+        href="https://github.com/benjamin-bonneton/vision-care"
+        target="_blank"
+        className="copyright"
+      >
+        © Vision Care - Benjamin Bonneton
+      </a>
     </>
   );
 }
